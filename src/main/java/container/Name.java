@@ -3,7 +3,7 @@ package container;
 /**
  * Created by Matthew on 5/15/2018.
  */
-public class Name {
+public class Name implements Comparable {
     private String firstName, lastName;
 
     public Name(String firstName, String lastName) {
@@ -45,5 +45,12 @@ public class Name {
         Name name2 = new Name("f2", "l2");
         Name name3 = new Name("f3", "l3");
         System.out.println(name3);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Name name = (Name) o;
+        int lastCmp = lastName.compareTo(name.lastName);
+        return (lastCmp != 0 ? lastCmp : firstName.compareTo(name.firstName));
     }
 }
